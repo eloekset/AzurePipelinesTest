@@ -9,9 +9,12 @@ trigger:
     - release/*
     - develop
     - master
-    - refs/tags/v2.*
-    - refs/tags/v3.*
-    - refs/tags/v4.*
+  tags:
+    include:
+    - v1.*
+    - v2.*
+    - v3.*
+    - v4.*
 
 pr: none
 
