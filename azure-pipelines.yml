@@ -24,4 +24,9 @@ steps:
     projects: '$(Build.SourcesDirectory)/src/*.csproj'
 - task: CmdLine@2
   inputs:
-    script: 'dotnet pack $(Build.SourcesDirectory)/src/*.csproj --output $(Build.ArtifactStagingDirectory) --include-symbols -p:Configuration=$(buildConfiguration) -p:Version=$(build.buildNumber) --verbosity Detailed'
+    script: 'dotnet pack $(Build.SourcesDirectory)/src/*.csproj --output $(Build.ArtifactStagingDirectory) --include-symbols -p:Configuration=$(buildConfiguration) -p:Version=$(build.buildNumber)'
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
